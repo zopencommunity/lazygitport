@@ -15,17 +15,19 @@ export ZOPEN_MAKE_MINIMAL=1
 export ZOPEN_CHECK="skip"
 export ZOPEN_CLEAN="zopen_clean"
 export ZOPEN_INSTALL="zopen_install"
+export ZOPEN_COMP=GO
 
 zopen_init()
 {
   export CGO_ENABLED=0
   export GOBIN=$ZOPEN_INSTALL_DIR/bin
-  export PATH=$PATH:$GOROOT/go-build-zos/bin
   mkdir -p $ZOPEN_INSTALL_DIR
 }
 
 zopen_build()
 {
+  echo $PWD
+  go version
   go build
 }
 
@@ -38,8 +40,8 @@ zopen_wharf()
   cd pty && git -c advice.detachedHead=false checkout $PTY_TAG
   curl -s -o pty--$PTY_TAG.patch "https://raw.githubusercontent.com/ZOSOpenTools/wharf/main/deps-patches/pty--$PTY_TAG.patch"
   git apply -v pty--$PTY_TAG.patch
-
   cd ..
+
   git clone https://github.com/atotto/clipboard.git
   git clone https://github.com/OpenPeeDeeP/xdg.git
   cd xdg; git apply ../patches/xdg.gopatch; cd ..
@@ -70,5 +72,5 @@ zopen_install()
 
 zopen_get_version()
 {
-  ./osv-scanner --version | head -1 | awk '{ print $3 }'
+  echo "1.0.0"
 }
