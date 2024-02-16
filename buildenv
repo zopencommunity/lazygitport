@@ -1,0 +1,74 @@
+# Update bump details accordingly. Use bump check to confirm.
+# bump: lazygit-version /LAZYGIT_VERSION="(.*)"/ https://github.com/jesseduffield/lazygit.git|semver:*
+# LAZYGIT_VERSION="V.R.M" # Specify a stable release
+# export ZOPEN_STABLE_TAG="v${LAZYGIT_VERSION}"
+export ZOPEN_STABLE_URL="https://github.com/jesseduffield/lazygit.git"
+export ZOPEN_STABLE_DEPS="comp_go wharf"
+export ZOPEN_BUILD_LINE="STABLE"
+export ZOPEN_CATEGORIES="devops utilities editor"
+
+export ZOPEN_COMP=GO
+export ZOPEN_CONFIGURE="zopen_wharf"
+export ZOPEN_CONFIGURE_MINIMAL=1
+export ZOPEN_MAKE="zopen_build"
+export ZOPEN_MAKE_MINIMAL=1
+export ZOPEN_CHECK="skip"
+export ZOPEN_CLEAN="zopen_clean"
+export ZOPEN_INSTALL="zopen_install"
+
+zopen_init()
+{
+  export CGO_ENABLED=0
+  export GOBIN=$ZOPEN_INSTALL_DIR/bin
+  export PATH=$PATH:$GOROOT/go-build-zos/bin
+  mkdir -p $ZOPEN_INSTALL_DIR
+}
+
+zopen_build()
+{
+  go build
+}
+
+zopen_wharf()
+{
+  PTY_TAG="v1.1.21"
+  cd .. && echo ""
+  git clone https://github.com/creack/pty.git
+  echo "Checking out $PTY_TAG"
+  cd pty && git -c advice.detachedHead=false checkout $PTY_TAG
+  curl -s -o pty--$PTY_TAG.patch "https://raw.githubusercontent.com/ZOSOpenTools/wharf/main/deps-patches/pty--$PTY_TAG.patch"
+  git apply -v pty--$PTY_TAG.patch
+
+  cd ..
+  git clone https://github.com/atotto/clipboard.git
+  git clone https://github.com/OpenPeeDeeP/xdg.git
+  cd xdg; git apply ../patches/xdg.gopatch; cd ..
+  git clone https://github.com/sirupsen/logrus.git
+  git clone https://github.com/spf13/afero.git
+  git clone https://github.com/jesseduffield/gocui.git
+  cd gocui; git apply ../patches/gui_others.gopatch; cd ..
+  git clone https://github.com/jesseduffield/go-git.git
+  cd go-git; git apply ../patches/go-git.gopatch; cd ..
+  
+  go work init ./lazygit ./clipboard ./xdg ./logrus ./afero ./gocui ./go-git ./pty
+  wharf ./lazygit/...
+  wharf ./clipboard/...
+  wharf ./logrus/...
+  wharf ./afero/...
+  cd ./lazygit
+}
+
+zopen_clean()
+{
+  rm -rf ../.wharf_cache ../go.work* ../wharf_port
+}
+
+zopen_install()
+{
+  go install 
+}
+
+zopen_get_version()
+{
+  ./osv-scanner --version | head -1 | awk '{ print $3 }'
+}

@@ -1,0 +1,10 @@
+diff --git a/xdg_bsd.go b/xdg_bsd.go
+index ea99f2f..fdb64c8 100644
+--- a/xdg_bsd.go
++++ b/xdg_bsd.go
+@@ -1,4 +1,4 @@
+-// +build freebsd openbsd netbsd
++// +build freebsd openbsd netbsd zos
+ 
+ // Copyright (c) 2017, OpenPeeDeeP. All rights reserved.
+ // Use of this source code is governed by a BSD-style

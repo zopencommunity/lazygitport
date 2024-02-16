@@ -1,0 +1,10 @@
+diff --git a/worktree_unix_other.go b/worktree_unix_other.go
+index 3d1aabf..e38ae1e 100644
+--- a/worktree_unix_other.go
++++ b/worktree_unix_other.go
+@@ -1,4 +1,4 @@
+-// +build openbsd dragonfly solaris
++// +build openbsd dragonfly solaris zos
+ 
+ package git
+ 

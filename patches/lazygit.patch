@@ -1,0 +1,42 @@
+diff --git a/pkg/config/user_config.go b/pkg/config/user_config.go
+index 916b6dc9..9ccb69cb 100644
+--- a/pkg/config/user_config.go
++++ b/pkg/config/user_config.go
+@@ -611,7 +611,7 @@ func GetDefaultConfig() *UserConfig {
+ 			ExpandFocusedSidePanel:   false,
+ 			MainPanelSplitMode:       "flexible",
+ 			EnlargedSideViewLocation: "left",
+-			Language:                 "auto",
++			Language:                 "en",
+ 			TimeFormat:               "02 Jan 06",
+ 			ShortTimeFormat:          time.Kitchen,
+ 			Theme: ThemeConfig{
+diff --git a/pkg/i18n/i18n.go b/pkg/i18n/i18n.go
+index d7358775..95da81bd 100644
+--- a/pkg/i18n/i18n.go
++++ b/pkg/i18n/i18n.go
+@@ -3,7 +3,6 @@ package i18n
+ import (
+ 	"strings"
+ 
+-	"github.com/cloudfoundry/jibber_jabber"
+ 	"github.com/go-errors/errors"
+ 	"github.com/imdario/mergo"
+ 	"github.com/sirupsen/logrus"
+@@ -16,10 +15,12 @@ type Localizer struct {
+ }
+ 
+ func NewTranslationSetFromConfig(log *logrus.Entry, configLanguage string) (*TranslationSet, error) {
+-	if configLanguage == "auto" {
+-		language := detectLanguage(jibber_jabber.DetectIETF)
+-		return NewTranslationSet(log, language), nil
+-	}
++  
++    configLanguage = "en"
++//	if configLanguage == "auto" {
++//		language := detectLanguage(jibber_jabber.DetectIETF)
++//	 return NewTranslationSet(log, language), nil
++//	}
+ 
+ 	for key := range GetTranslationSets() {
+ 		if key == configLanguage {
