@@ -9,6 +9,6 @@ node('linux')
       userRemoteConfigs: [[url: 'https://github.com/ZOSOpenTools/lazygitport.git']]])
   }
   stage('Build') {
-    build job: 'Port-Pipeline', parameters: [string(name: 'PORT_GITHUB_REPO', value: 'https://github.com/ZOSOpenTools/lazygitport.git'), string(name: 'PORT_DESCRIPTION', value: 'UI for git commands' ), string(name: 'BUILD_LINE', value: 'DEV') ]
+    build job: 'Port-Pipeline', parameters: [string(name: 'PORT_GITHUB_REPO', value: 'https://github.com/ZOSOpenTools/lazygitport.git'), string(name: 'PORT_DESCRIPTION', value: 'UI for git commands' ), string(name: 'BUILD_LINE', value: 'DEV'), string(name: 'NODE_LABEL', value: "go_120" )  ]
   }
 }

@@ -1,10 +1,48 @@
-diff --git a/xdg_bsd.go b/xdg_bsd.go
-index ea99f2f..fdb64c8 100644
---- a/xdg_bsd.go
-+++ b/xdg_bsd.go
-@@ -1,4 +1,4 @@
--// +build freebsd openbsd netbsd
-+// +build freebsd openbsd netbsd zos
+diff --git a/internal/pathutil/pathutil_unix.go b/internal/pathutil/pathutil_unix.go
+index a014c66..9bc121f 100644
+--- a/internal/pathutil/pathutil_unix.go
++++ b/internal/pathutil/pathutil_unix.go
+@@ -1,5 +1,5 @@
+-//go:build aix || darwin || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris
+-// +build aix darwin dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris
++//go:build aix || darwin || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris || zos
++// +build aix darwin dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris zos
  
- // Copyright (c) 2017, OpenPeeDeeP. All rights reserved.
- // Use of this source code is governed by a BSD-style
+ package pathutil
+ 
+diff --git a/internal/pathutil/pathutil_unix_test.go b/internal/pathutil/pathutil_unix_test.go
+index 5fe1c13..1092b99 100644
+--- a/internal/pathutil/pathutil_unix_test.go
++++ b/internal/pathutil/pathutil_unix_test.go
+@@ -1,5 +1,5 @@
+-//go:build aix || darwin || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris
+-// +build aix darwin dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris
++//go:build aix || darwin || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris || zos
++// +build aix darwin dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris zos
+ 
+ package pathutil_test
+ 
+diff --git a/paths_unix.go b/paths_unix.go
+index ad571df..3b6d65f 100644
+--- a/paths_unix.go
++++ b/paths_unix.go
+@@ -1,5 +1,5 @@
+-//go:build aix || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris
+-// +build aix dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris
++//go:build aix || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris || zos
++// +build aix dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris zos
+ 
+ package xdg
+ 
+diff --git a/paths_unix_test.go b/paths_unix_test.go
+index 055a79f..0fb1399 100644
+--- a/paths_unix_test.go
++++ b/paths_unix_test.go
+@@ -1,5 +1,5 @@
+-//go:build aix || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris
+-// +build aix dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris
++//go:build aix || dragonfly || freebsd || (js && wasm) || nacl || linux || netbsd || openbsd || solaris || zos
++// +build aix dragonfly freebsd js,wasm nacl linux netbsd openbsd solaris zos
+ 
+ package xdg_test
+ 

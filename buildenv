@@ -44,6 +44,7 @@ zopen_wharf()
 
   git clone https://github.com/atotto/clipboard.git
   git clone https://github.com/OpenPeeDeeP/xdg.git
+  git clone https://github.com/adrg/xdg.git
   cd xdg; git apply ../patches/xdg.gopatch; cd ..
   git clone https://github.com/sirupsen/logrus.git
   git clone https://github.com/spf13/afero.git
