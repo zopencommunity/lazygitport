@@ -1,0 +1,26 @@
+diff --git a/pkg/config/user_config.go b/pkg/config/user_config.go
+index 9d5fb3742..530a7f180 100644
+--- a/pkg/config/user_config.go
++++ b/pkg/config/user_config.go
+@@ -702,7 +702,7 @@ func GetDefaultConfig() *UserConfig {
+ 			MainPanelSplitMode:       "flexible",
+ 			EnlargedSideViewLocation: "left",
+ 			WrapLinesInStagingView:   true,
+-			Language:                 "auto",
++			Language:                 "en",
+ 			TimeFormat:               "02 Jan 06",
+ 			ShortTimeFormat:          time.Kitchen,
+ 			Theme: ThemeConfig{
+diff --git a/pkg/i18n/i18n.go b/pkg/i18n/i18n.go
+index 3848d42cf..904ad4976 100644
+--- a/pkg/i18n/i18n.go
++++ b/pkg/i18n/i18n.go
+@@ -19,7 +19,7 @@ func NewTranslationSetFromConfig(log *logrus.Entry, configLanguage string) (*Tra
+ 	if err != nil {
+ 		return nil, err
+ 	}
+-
++        configLanguage = "en"
+ 	if configLanguage == "auto" {
+ 		language := detectLanguage(jibber_jabber.DetectIETF)
+ 		for _, languageCode := range languageCodes {

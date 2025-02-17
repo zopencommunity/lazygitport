@@ -1,0 +1,14 @@
+./attribute.go
+./doc.go
+./edit.go
+./escape.go
+./gui.go
+./gui_others.go
+./keybinding.go
+./loader.go
+./scrollbar.go
+./task.go
+./task_manager.go
+./tcell_driver.go
+./text_area.go
+./view.go

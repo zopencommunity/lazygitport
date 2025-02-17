@@ -1,0 +1,6 @@
+./common.go
+./decoder.go
+./doc.go
+./encoder.go
+./option.go
+./section.go

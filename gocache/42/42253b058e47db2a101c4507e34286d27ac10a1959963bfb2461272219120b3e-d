@@ -1,0 +1,11 @@
+./author.go
+./branch.go
+./commit.go
+./commit_file.go
+./file.go
+./remote.go
+./remote_branch.go
+./stash_entry.go
+./submodule_config.go
+./tag.go
+./worktree.go

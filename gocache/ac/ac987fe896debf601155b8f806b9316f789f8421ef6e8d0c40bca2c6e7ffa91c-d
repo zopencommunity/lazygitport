@@ -1,0 +1,12 @@
+./color.go
+./color_16.go
+./color_256.go
+./color_rgb.go
+./color_tag.go
+./convert.go
+./detect_env.go
+./detect_nonwin.go
+./printer.go
+./quickstart.go
+./style.go
+./utils.go

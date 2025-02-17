@@ -1,0 +1,9 @@
+./doc.go
+./ioctl.go
+./ioctl_zos.go
+./pty_unsupported.go
+./run.go
+./start.go
+./winsize.go
+./winsize_unix.go
+./ztypes_s390x.go

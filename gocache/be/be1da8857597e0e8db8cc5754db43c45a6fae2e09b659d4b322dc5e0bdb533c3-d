@@ -1,0 +1,4 @@
+./chacha_generic.go
+./chacha_s390x.go
+./xor.go
+./chacha_s390x.s

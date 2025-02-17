@@ -1,0 +1,14 @@
+./bytealg.go
+./compare_native.go
+./count_native.go
+./equal_generic.go
+./equal_native.go
+./index_native.go
+./index_s390x.go
+./indexbyte_native.go
+./lastindexbyte_generic.go
+./compare_s390x.s
+./count_s390x.s
+./equal_s390x.s
+./index_s390x.s
+./indexbyte_s390x.s

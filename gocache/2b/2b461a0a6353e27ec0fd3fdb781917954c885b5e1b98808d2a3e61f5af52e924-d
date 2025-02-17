@@ -1,0 +1,10 @@
+./cmd_obj.go
+./cmd_obj_builder.go
+./cmd_obj_runner.go
+./cmd_obj_runner_default.go
+./copy.go
+./dummies.go
+./fake_cmd_obj_runner.go
+./gui_io.go
+./os.go
+./os_default_platform.go

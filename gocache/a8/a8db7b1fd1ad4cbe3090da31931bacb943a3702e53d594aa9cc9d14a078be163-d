@@ -1,0 +1,9 @@
+./build_tree.go
+./collapsed_paths.go
+./commit_file_node.go
+./commit_file_tree.go
+./commit_file_tree_view_model.go
+./file_node.go
+./file_tree.go
+./file_tree_view_model.go
+./node.go

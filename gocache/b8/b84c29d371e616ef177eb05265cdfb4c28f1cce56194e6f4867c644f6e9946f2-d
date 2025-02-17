@@ -1,0 +1,3 @@
+./goarch.go
+./goarch_s390x.go
+./zgoarch_s390x.go

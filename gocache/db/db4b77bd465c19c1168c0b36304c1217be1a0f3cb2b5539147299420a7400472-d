@@ -1,0 +1,11 @@
+./at_sysnum_zos.go
+./constants.go
+./eaccess_other.go
+./fcntl_unix.go
+./getrandom_zos.go
+./kernel_version_other.go
+./net.go
+./nofollow_posix.go
+./nonblocking_zos.go
+./sys_zos_s390x.go
+./asm_zos_s390x.s

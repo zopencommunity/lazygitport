@@ -1,0 +1,6 @@
+./docker_compose_handler.go
+./handler.go
+./json_handler.go
+./logfmt_handler.go
+./scanner.go
+./time_parse.go

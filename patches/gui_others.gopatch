@@ -1,5 +1,5 @@
 diff --git a/gui_others.go b/gui_others.go
-index 578686f..4328d94 100644
+index f0de782..2e065bb 100644
 --- a/gui_others.go
 +++ b/gui_others.go
 @@ -11,21 +11,15 @@ import (
@@ -9,7 +9,7 @@ index 578686f..4328d94 100644
 -	"unsafe"
  
  	"github.com/go-errors/errors"
-+  "golang.org/x/sys/unix"
++	"golang.org/x/sys/unix"
  )
  
  // getTermWindowSize is get terminal window size on linux or unix.
@@ -26,14 +26,14 @@ index 578686f..4328d94 100644
  
  	out, err := os.OpenFile("/dev/tty", os.O_RDWR, 0)
  	if err != nil {
-@@ -37,13 +31,11 @@ func (g *Gui) getTermWindowSize() (int, int, error) {
+@@ -37,13 +31,12 @@ func (g *Gui) getTermWindowSize() (int, int, error) {
  	signal.Notify(signalCh, syscall.SIGWINCH, syscall.SIGINT)
  
  	for {
 -		_, _, _ = syscall.Syscall(syscall.SYS_IOCTL,
 -			out.Fd(), uintptr(syscall.TIOCGWINSZ), uintptr(unsafe.Pointer(&sz)))
--
 +    var winsize, _ = unix.IoctlGetWinsize(int(out.Fd()), unix.TIOCGWINSZ)
+ 
  		// check terminal window size
 -		termw, termh = int(sz.cols), int(sz.rows)
 +		termw, termh = winsize.Row, winsize.Col
@@ -42,4 +42,4 @@ index 578686f..4328d94 100644
 +			return int(termw), int(termh), nil
  		}
  
- 		select {
+ 		signal := <-signalCh

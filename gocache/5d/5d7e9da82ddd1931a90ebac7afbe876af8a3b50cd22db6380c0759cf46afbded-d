@@ -1,0 +1,9 @@
+./block.go
+./cbc_s390x.go
+./cipher.go
+./cipher_s390x.go
+./const.go
+./ctr_s390x.go
+./gcm_s390x.go
+./modes.go
+./asm_s390x.s

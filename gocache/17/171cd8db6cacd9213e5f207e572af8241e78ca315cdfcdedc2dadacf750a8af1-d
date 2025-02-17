@@ -1,0 +1,5 @@
+./sha512.go
+./sha512block.go
+./sha512block_decl.go
+./sha512block_s390x.go
+./sha512block_s390x.s

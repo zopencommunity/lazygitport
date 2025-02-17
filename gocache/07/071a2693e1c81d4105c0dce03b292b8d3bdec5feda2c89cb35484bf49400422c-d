@@ -1,0 +1,5 @@
+./sha1.go
+./sha1block.go
+./sha1block_decl.go
+./sha1block_s390x.go
+./sha1block_s390x.s

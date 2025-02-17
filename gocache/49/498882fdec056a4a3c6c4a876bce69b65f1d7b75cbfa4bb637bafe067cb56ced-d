@@ -1,0 +1,17 @@
+./color.go
+./date.go
+./dummies.go
+./errors.go
+./formatting.go
+./history_buffer.go
+./io.go
+./lines.go
+./once_writer.go
+./rebase_todo.go
+./regexp.go
+./search.go
+./slice.go
+./string_stack.go
+./template.go
+./thread_safe_map.go
+./utils.go

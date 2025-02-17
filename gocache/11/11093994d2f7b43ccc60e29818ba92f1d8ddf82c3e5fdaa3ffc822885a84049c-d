@@ -1,0 +1,4 @@
+./base_dirs.go
+./doc.go
+./paths_unix.go
+./xdg.go

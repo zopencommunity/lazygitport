@@ -1,0 +1,4 @@
+./poly1305.go
+./sum_generic.go
+./sum_s390x.go
+./sum_s390x.s

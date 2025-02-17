@@ -1,0 +1,7 @@
+./format.go
+./hunk.go
+./parse.go
+./patch.go
+./patch_builder.go
+./patch_line.go
+./transform.go

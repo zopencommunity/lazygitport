@@ -1,0 +1,12 @@
+./common.go
+./common_commands.go
+./context.go
+./keybindings.go
+./modes.go
+./ref.go
+./refresh.go
+./rendering.go
+./search_state.go
+./suggestion.go
+./version_number.go
+./views.go

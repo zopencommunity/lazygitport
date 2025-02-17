@@ -1,0 +1,5 @@
+./cpu.go
+./cpu_no_name.go
+./cpu_zos_s390x.go
+./cpu.s
+./cpu_s390x.s

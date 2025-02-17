@@ -1,0 +1,9 @@
+./doc.go
+./hashes.go
+./keccakf.go
+./register.go
+./sha3.go
+./sha3_s390x.go
+./shake.go
+./xor.go
+./sha3_s390x.s

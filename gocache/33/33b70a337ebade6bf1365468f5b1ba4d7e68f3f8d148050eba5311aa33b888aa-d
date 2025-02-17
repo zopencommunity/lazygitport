@@ -1,0 +1,11 @@
+./byteorder.go
+./cpu.go
+./cpu_gc_s390x.go
+./cpu_s390x.go
+./cpu_zos.go
+./cpu_zos_s390x.go
+./endian_big.go
+./parse.go
+./runtime_auxv.go
+./runtime_auxv_go121.go
+./cpu_s390x.s

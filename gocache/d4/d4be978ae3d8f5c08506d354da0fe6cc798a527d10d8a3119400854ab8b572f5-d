@@ -1,0 +1,4 @@
+./find_conflicts.go
+./merge_conflict.go
+./rendering.go
+./state.go

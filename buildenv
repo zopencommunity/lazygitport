@@ -1,7 +1,7 @@
 # Update bump details accordingly. Use bump check to confirm.
 # bump: lazygit-version /LAZYGIT_VERSION="(.*)"/ https://github.com/jesseduffield/lazygit.git|semver:*
-# LAZYGIT_VERSION="0.42.0" # Specify a stable release
-# export ZOPEN_STABLE_TAG="v${LAZYGIT_VERSION}"
+LAZYGIT_VERSION="0.46.0" # Specify a stable release
+export ZOPEN_STABLE_TAG="v${LAZYGIT_VERSION}"
 export ZOPEN_STABLE_URL="https://github.com/jesseduffield/lazygit.git"
 export ZOPEN_STABLE_DEPS="check_go wharf"
 export ZOPEN_BUILD_LINE="STABLE"

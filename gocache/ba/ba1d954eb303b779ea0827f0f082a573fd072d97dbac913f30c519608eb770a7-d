@@ -1,0 +1,14 @@
+./branches.go
+./commits.go
+./files.go
+./item_operations.go
+./reflog_commits.go
+./remote_branches.go
+./remotes.go
+./stash_entries.go
+./status.go
+./submodules.go
+./suggestions.go
+./tags.go
+./working_tree.go
+./worktrees.go
