@@ -1,8 +1,28 @@
+diff --git a/main.go b/main.go
+index d7ce1db..91137d5 100644
+--- a/main.go
++++ b/main.go
+@@ -1,6 +1,7 @@
+ package main
+ 
+ import (
++	"os"
+ 	"github.com/jesseduffield/lazygit/pkg/app"
+ )
+ 
+@@ -13,6 +14,7 @@ var (
+ )
+ 
+ func main() {
++	os.Setenv("__ZOS_QUICKEXIT", "1")
+ 	ldFlagsBuildInfo := &app.BuildInfo{
+ 		Commit:      commit,
+ 		Date:        date,
 diff --git a/pkg/config/user_config.go b/pkg/config/user_config.go
-index 9d5fb3742..530a7f180 100644
+index 165de3e..2894d33 100644
 --- a/pkg/config/user_config.go
 +++ b/pkg/config/user_config.go
-@@ -702,7 +702,7 @@ func GetDefaultConfig() *UserConfig {
+@@ -744,7 +744,7 @@ func GetDefaultConfig() *UserConfig {
  			MainPanelSplitMode:       "flexible",
  			EnlargedSideViewLocation: "left",
  			WrapLinesInStagingView:   true,
@@ -12,30 +32,29 @@ index 9d5fb3742..530a7f180 100644
  			ShortTimeFormat:          time.Kitchen,
  			Theme: ThemeConfig{
 diff --git a/pkg/i18n/i18n.go b/pkg/i18n/i18n.go
-index 3848d42cf..a1cc50862 100644
+index 528f381..bee5b1c 100644
 --- a/pkg/i18n/i18n.go
 +++ b/pkg/i18n/i18n.go
-@@ -7,7 +7,7 @@ import (
- 	"io/fs"
+@@ -8,7 +8,7 @@ import (
  	"strings"
  
+ 	"dario.cat/mergo"
 -	"github.com/cloudfoundry/jibber_jabber"
 +//	"github.com/cloudfoundry/jibber_jabber"
  	"github.com/go-errors/errors"
- 	"github.com/imdario/mergo"
  	"github.com/samber/lo"
-@@ -19,8 +19,8 @@ func NewTranslationSetFromConfig(log *logrus.Entry, configLanguage string) (*Tra
- 	if err != nil {
+ 	"github.com/sirupsen/logrus"
+@@ -20,7 +20,8 @@ func NewTranslationSetFromConfig(log *logrus.Entry, configLanguage string) (*Tra
  		return nil, err
  	}
--
+ 
 -	if configLanguage == "auto" {
-+        configLanguage = "en"
++	configLanguage = "en"
 +/*	if configLanguage == "auto" {
  		language := detectLanguage(jibber_jabber.DetectIETF)
  		for _, languageCode := range languageCodes {
  			if strings.HasPrefix(language, languageCode) {
-@@ -31,7 +31,7 @@ func NewTranslationSetFromConfig(log *logrus.Entry, configLanguage string) (*Tra
+@@ -31,7 +32,7 @@ func NewTranslationSetFromConfig(log *logrus.Entry, configLanguage string) (*Tra
  		// Detecting a language that we don't have a translation for is not an
  		// error, we'll just use English.
  		return EnglishTranslationSet(), nil
