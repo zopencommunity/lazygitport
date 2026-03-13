@@ -1,6 +1,6 @@
 # Update bump details accordingly. Use bump check to confirm.
 # bump: lazygit-version /LAZYGIT_VERSION="(.*)"/ https://github.com/jesseduffield/lazygit.git|semver:*
-LAZYGIT_VERSION="0.46.0" # Specify a stable release
+LAZYGIT_VERSION="0.60.0" # Specify a stable release
 export ZOPEN_STABLE_TAG="v${LAZYGIT_VERSION}"
 export ZOPEN_STABLE_URL="https://github.com/jesseduffield/lazygit.git"
 export ZOPEN_STABLE_DEPS="check_go wharf"
@@ -28,18 +28,16 @@ zopen_build()
 {
   echo $PWD
   go version
-  go build
+  go build 
 }
 
 zopen_wharf()
 {
-  PTY_TAG="v1.1.21"
+  PTY_TAG="v1.1.24"
   cd .. && echo ""
   git clone https://github.com/creack/pty.git
   echo "Checking out $PTY_TAG"
   cd pty && git -c advice.detachedHead=false checkout $PTY_TAG
-  curl -s -o pty--$PTY_TAG.patch "https://raw.githubusercontent.com/ZOSOpenTools/wharf/main/deps-patches/pty--$PTY_TAG.patch"
-  git apply -v pty--$PTY_TAG.patch
   cd ..
 
   git clone https://github.com/atotto/clipboard.git
@@ -51,8 +49,10 @@ zopen_wharf()
   cd gocui; git apply ../patches/gui_others.gopatch; cd ..
   git clone https://github.com/jesseduffield/go-git.git
   cd go-git; git apply ../patches/go-git.gopatch; cd ..
-  
-  go work init ./lazygit ./clipboard ./xdg ./logrus ./afero ./gocui ./go-git ./pty
+  git clone https://github.com/golang/sys.git
+  cd sys; git -c advice.detachedHead=false checkout v0.42.0; git apply ../patches/sys.gopatch; cd ..
+ 
+  go work init ./lazygit ./clipboard ./xdg ./logrus ./afero ./gocui ./go-git ./pty ./sys
   wharf ./lazygit/...
   wharf ./clipboard/...
   wharf ./logrus/...
@@ -72,5 +72,5 @@ zopen_install()
 
 zopen_get_version()
 {
-  echo "1.0.0"
+  echo "$LAZYGIT_VERSION"
 }
