@@ -3,7 +3,7 @@
 LAZYGIT_VERSION="0.60.0" # Specify a stable release
 export ZOPEN_STABLE_TAG="v${LAZYGIT_VERSION}"
 export ZOPEN_STABLE_URL="https://github.com/jesseduffield/lazygit.git"
-export ZOPEN_STABLE_DEPS="check_go wharf"
+export ZOPEN_STABLE_DEPS="check_go wharf coreutils grep"
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_CATEGORIES="devops utilities editor"
 
@@ -12,7 +12,8 @@ export ZOPEN_CONFIGURE="zopen_wharf"
 export ZOPEN_CONFIGURE_MINIMAL=1
 export ZOPEN_MAKE="zopen_build"
 export ZOPEN_MAKE_MINIMAL=1
-export ZOPEN_CHECK="skip"
+export ZOPEN_CHECK="zopen_check"
+export ZOPEN_CHECK_MINIMAL=1
 export ZOPEN_CLEAN="zopen_clean"
 export ZOPEN_INSTALL="zopen_install"
 export ZOPEN_COMP=GO
@@ -29,6 +30,11 @@ zopen_build()
   echo $PWD
   go version
   go build 
+}
+
+zopen_check()
+{
+  go test pkg/integration/clients/*.go -v -timeout 100m
 }
 
 zopen_wharf()
@@ -58,6 +64,24 @@ zopen_wharf()
   wharf ./logrus/...
   wharf ./afero/...
   cd ./lazygit
+}
+
+zopen_check_results()
+{
+  dir="$1"
+  pfx="$2"
+  chk="$1/$2_check.log"
+
+  actualFailures=$(grep -E -c "^[[:space:]]*--- FAIL:" "$chk")
+  actualPasses=$(grep -E -c "^[[:space:]]*--- PASS:" "$chk")
+  actualSkips=$(grep -c "Skipping test" "$chk")
+  totalTests=$((actualFailures + actualPasses + actualSkips))
+  expectedFailures=5
+
+  echo "actualFailures:$actualFailures"
+  echo "actualPasses:$actualPasses"
+  echo "totalTests:$totalTests"
+  echo "expectedFailures:$expectedFailures"
 }
 
 zopen_clean()
